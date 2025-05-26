@@ -1,0 +1,42 @@
+{
+  "title": "blackspike mac apps",
+  "description": "A blackspike project",
+  "url": "https://css-tips.blackspike.com",
+  "theme_color": "#1a1a1a",
+  "footer_links": [
+    {
+      "title": "download icon",
+      "link": "https://www.blackspike.com/dropbox/icon.icns"
+    },
+    {
+      "title": "download demo app",
+      "link": "https://www.blackspike.com/dropbox/ffmpeg.app"
+    },
+    {
+      "title": "by blackspike.com",
+      "link": "https://www.blackspike.com/blog/blackspike-free-astro-tailwind-theme/"
+    }
+  ],
+  "social_links": [
+    {
+      "title": "Twitter / X",
+      "link": "https://x.com/blackspikeltd/"
+    },
+    {
+      "title": "Mastodon",
+      "link": "https://mastodon.cloud/@blackspike"
+    },
+    {
+      "title": "GitHub",
+      "link": "https://github.com/blackspike/"
+    },
+    {
+      "title": "LinkedIn",
+      "link": "https://www.linkedin.com/company/blackspike"
+    },
+    {
+      "title": "Bluesky",
+      "link": "https://bsky.app/profile/blackspike.com/"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@reference "./global.css";
+
+.bs-h1 {
+  @apply font-display font-semibold text-balance text-6xl tracking-tight;
+}
+
+.bs-h2 {
+  @apply font-display font-semibold text-balance text-4xl lg:text-4xl tracking-tight;
+}
+
+.bs-h3 {
+  @apply font-display font-semibold text-balance text-4xl lg:text-2xl tracking-tight;
+}
+
+.bs-body-text {
+  @apply font-body font-semibold text-pretty text-4xl lg:text-2xl
+}

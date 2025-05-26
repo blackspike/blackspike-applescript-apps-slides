@@ -1,0 +1,39 @@
+---
+import { getCollection, render } from 'astro:content'
+import Layout from "../../layouts/Layout.astro"
+import SlideContent from "../../components/SlideContent.astro"
+
+export async function getStaticPaths() {
+
+  const items = await getCollection('slides')
+
+  return items.map(entry => ({
+    params: { id: entry.id },
+    props: { entry },
+  }))
+
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+---
+
+<Layout title={ entry.data.title } description={ entry.data.description }>
+
+  <SlideContent
+    title={ entry.data.title }
+    description={ entry.data.description }
+  >
+
+    <Fragment slot="content">
+      <Content />
+    </Fragment>
+
+  </SlideContent>
+
+  <!-- Audio -->
+  { entry.data.audio &&
+    <audio src={ entry.data.audio } autoplay />
+  }
+
+</Layout>

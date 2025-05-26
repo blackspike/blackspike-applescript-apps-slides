@@ -1,0 +1,23 @@
+---
+title: "Custom app icon"
+description: "We use a different colour icon for each of our apps"
+audio: "/edit/assets/voice-over/5-mac-app-icon.mp3"
+order: 3
+---
+
+import { Image } from 'astro:assets';
+import screen from '../../assets/images/webdev-app-folder.png'
+import VideoPlayer from '../../components/VideoPlayer.astro'
+
+Download our icon from <a href="https://www.blackspike.com/dropbox/icon.icns">blackspike.com/dropbox/icon.icns</a>
+
+<VideoPlayer
+  classes="w-[900px] right-[-520px] top-[-80px] lg:w-[440px] lg:right-[30px] lg:top-[30px]"
+  name="mac-app-icon"
+/>
+
+<Image
+  src={screen}
+  alt="code screenshot"
+  class="rounded-xl drop-shadow-xl absolute z-1 hover:z-10 w-[540px] right-[-20px] top-[-30px] lg:w-[430px] lg:right-[500px] lg:top-[120px] brightness-[1.2]"
+/>

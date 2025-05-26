@@ -1,0 +1,17 @@
+---
+title: "Use the app!"
+description: "Drag a .mp4 file onto it and wait…"
+audio: "/edit/assets/voice-over/4-mac-app-demo.mp3"
+order: 2
+---
+
+import { Image } from 'astro:assets';
+import screen from '../../assets/images/webdev-app-folder.png'
+import VideoPlayer from '../../components/VideoPlayer.astro'
+
+You should have an optimised `.mp4`, a `.webm`, an `.avif` poster image, and an `<video>` tag in your clipboard
+
+<VideoPlayer
+  classes="w-[900px] right-[-520px] top-[-80px] lg:w-[540px] lg:right-[30px] lg:top-[30px]"
+  name="ffmpeg-app-demo"
+/>

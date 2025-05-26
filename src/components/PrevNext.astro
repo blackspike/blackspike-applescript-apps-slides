@@ -1,0 +1,41 @@
+---
+
+import { getCollection } from "astro:content"
+import Arrow from '../assets/images/icon-arrow.svg'
+
+let posts = (await getCollection("slides")).sort((a, b) => a.data.order - b.data.order)
+
+const index = posts.findIndex((post) => {
+  return Astro.request.url.includes(post.id)
+})
+
+const nextPost = posts[index + 1]
+const prevPost = posts[index - 1]
+---
+
+<nav class="prev-next select-none font-semibold flex flex-col-reverse lg:flex-row justify-center gap-3">
+
+  <!-- Prev -->
+  <a
+    href={ prevPost?.id ? `/slides/${prevPost.id}/` : '/' }
+    aria-label="Previous slide"
+    class="js-prev bs-btn group !p-0 flex items-center justify-center h-10 w-10 md:h-12 md:w-12"
+    >
+
+    <Arrow class="opacity-60 h-4 w-4 -translate-x-[2px] group-active:translate-y-[1px]" height="16" width="25" />
+
+  </a>
+
+  <!-- Next -->
+  <a
+    href={ nextPost?.id ? `/slides/${nextPost.id}/` : '/' }
+    aria-label="Next slide"
+    class="js-next bs-btn !p-0 flex items-center justify-center h-10 w-10 md:h-12 md:w-12 -scale-x-100"
+    >
+
+    <Arrow class="opacity-60 h-4 w-4 -translate-x-[2px] group-active:translate-y-[1px]" height="16" width="25" />
+
+  </a>
+
+</nav>
+
