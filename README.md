@@ -1,6 +1,6 @@
-# blackspike 10 modern css tips
+# blackspike applescript and ai apps
 
-This will be the template for markdown-powered videos
+
 
 ```sh
 ## 🧞 Commands
