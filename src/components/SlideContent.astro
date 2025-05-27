@@ -44,18 +44,17 @@ const customTransition = {
 
 <script>
 
-document.addEventListener("astro:page-load", () => {
+  document.addEventListener("astro:page-load", () => {
 
-  const animImages = document.querySelectorAll('img, svg',)
-  const animVideos = document.querySelectorAll('video')
-  const soundImage = document.querySelector('.js-sound-image')
-  const soundVideo = document.querySelector('.js-sound-video')
+    const animImages = document.querySelectorAll('img, svg',)
+    const animVideos = document.querySelectorAll('video')
+    const soundImage = document.querySelector('.js-sound-image')
+    const soundVideo = document.querySelector('.js-sound-video')
 
-  animImages.forEach(thing => thing.addEventListener('animationstart', () =>  soundImage.play() ))
-  animVideos.forEach(thing => thing.addEventListener('animationstart', () =>  soundVideo.play() ))
+    animImages.forEach(thing => thing.addEventListener('animationstart', () =>  soundImage.play() ))
+    animVideos.forEach(thing => thing.addEventListener('animationstart', () =>  soundVideo.play() ))
 
-})
-
+  })
 
 </script>
 

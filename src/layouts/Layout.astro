@@ -15,7 +15,7 @@ import PrevNext from "../components/PrevNext.astro"
 
 const { title, description, image } = Astro.props
 
-const stripHTMLTags = str => str.replace(/<[^>]*>/g, '')
+const stripHTMLTags = str => str?.replace(/<[^>]*>/g, '')
 const titleNoHtml = stripHTMLTags(title)
 const descNoHtml = stripHTMLTags(description)
 ---
@@ -86,15 +86,5 @@ const descNoHtml = stripHTMLTags(description)
 
     </footer>
 
-
-    <script>
-      // Auto mode
-      // document.addEventListener("astro:page-load", () => {
-      //   const next = document.querySelector('.js-next')
-      //   setTimeout(() => {
-      //       next.click()
-      //   }, 10000)
-      // })
-    </script>
   </body>
 </html>
