@@ -1,5 +1,11 @@
 # Make custom Mac apps: creating our own web dev tools
 
+## View in your browser
+
+https://blackspike-mac-apps.netlify.app
+
+## YouTube script
+
 We use #AI to write single-use #AppleScript mac applications to save time on routine web development tasks.
 
 For example: a drag-and-drop #macOS App to optimise and encode web ready videos.
