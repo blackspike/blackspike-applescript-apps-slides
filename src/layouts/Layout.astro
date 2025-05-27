@@ -12,6 +12,8 @@ import settings from "../content/meta/settings.json"
 import Logo from '../assets/images/logo.svg'
 import PrevNext from "../components/PrevNext.astro"
 
+import Designer from "../components/Designer.astro"
+
 const { title, description, image } = Astro.props
 
 const stripHTMLTags = str => str?.replace(/<[^>]*>/g, '')
@@ -56,24 +58,20 @@ const descNoHtml = stripHTMLTags(description)
     </aside>
 
     <!-- Main -->
-    <main class='hidden lg:grid overflow-hidden w-[962px] h-[542px] z-10 isolate relative items-end p-10 bg-[var(--bg-color)]'>
+    <main class="js-main hidden lg:grid overflow-hidden w-[962px] h-[542px] z-10 isolate relative items-end p-10 bg-[var(--bg-color)]">
 
       <slot />
 
     </main>
 
     <!-- Nav -->
-    <div class="fixed top-10 right-10 z-10 transition-opacity duration-400">
-
+    <div class="fixed top-10 right-10 z-10">
       <PrevNext />
-
     </div>
 
     <!-- Logo -->
     <a class="absolute top-10 left-10 z-20" href="/">
-
       <Logo height="48" />
-
     </a>
 
     <!-- Footer -->
@@ -82,6 +80,11 @@ const descNoHtml = stripHTMLTags(description)
       { settings.footer_links.map( item => <a href={ item.link }> { item.title } </a> ) }
 
     </footer>
+
+    <!-- Designer -->
+    <div class="fixed top-10 left-10 z-10">
+      <Designer />
+    </div>
 
   </body>
 </html>

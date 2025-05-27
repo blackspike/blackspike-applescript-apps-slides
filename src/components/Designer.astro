@@ -1,0 +1,145 @@
+---
+import IconDesign from '../assets/images/icon-design.svg'
+---
+<div class="designer-wrapper">
+
+<!-- Button -->
+<button
+  aria-label="Open designer"
+  popovertarget="designer" id="designer-btn"
+  class="anchor-button bs-btn group !p-0 flex items-center justify-center h-12 w-12"
+  >
+
+  <IconDesign class="opacity-60 m-auto group-active:translate-y-[1px]" height="24" width="24" />
+
+</button>
+
+
+<!-- Modal -->
+<aside id="designer" popover class="anchor-modal bg-bs-surface-3 rounded-lg font-mono text-sm">
+
+  <div class="flex flex-col gap-3 p-5">
+
+    <section class="js-section-image flex flex-col gap-3" hidden>
+    <h2 class="font-bold">Image</h2>
+    <div class="input-group select-none">
+      <label for="w-image">Width </label>
+      <input id="w-image" class="js-image-w" type="range" min="0" max="1000">
+    </div>
+
+    <div class="input-group select-none">
+      <label for="x-image">X pos </label>
+      <input id="x-image" class="js-image-x" type="range" min="0" max="1000">
+    </div>
+
+    <div class="input-group select-none">
+      <label for="y-image">Y pos </label>
+      <input id="y-image" class="js-image-y" type="range" min="0" max="1000">
+    </div>
+
+    <div class="input-group flex flex-col">
+      <label for="css-image">CSS image</label>
+      <input id="css-image" class="js-css-image rounded bg-bs-surface-1 px-2 py-1 mt-1 text-xs" type="text" readonly>
+    </div>
+  </section>
+
+    <!-- Video -->
+    <section class="js-section-video flex flex-col gap-3" hidden>
+      <h2 class="font-bold">Video</h2>
+      <div class="input-group select-none">
+        <label for="w-video">Width </label>
+        <input id="w-video" class="js-video-w" type="range" min="0" max="1000">
+      </div>
+
+      <div class="input-group select-none">
+        <label for="x-video">X pos </label>
+        <input id="x-video" class="js-video-x" type="range" min="0" max="1000">
+      </div>
+
+      <div class="input-group select-none">
+        <label for="y-video">Y pos </label>
+        <input id="y-video" class="js-video-y" type="range" min="0" max="1000">
+      </div>
+
+      <div class="input-group flex flex-col">
+        <label for="css-video">CSS video</label>
+        <input id="css-video" class="js-css-video rounded bg-bs-surface-1 px-2 py-1 mt-1 text-xs" type="text" readonly>
+      </div>
+  </section>
+
+  </div>
+
+</aside>
+</div>
+<script>
+document.addEventListener("astro:page-load", () => {
+
+  const sectionImage = document.querySelector('.js-section-image')
+  const sectionVideo = document.querySelector('.js-section-video')
+
+  const cssFieldImage = document.querySelector('.js-css-image')
+  const cssFieldVideo = document.querySelector('.js-css-video')
+
+  const imagePosX = document.querySelector('.js-image-x')
+  const imagePosY = document.querySelector('.js-image-y')
+  const imageSizeW = document.querySelector('.js-image-w')
+
+  const videoPosX = document.querySelector('.js-video-x')
+  const videoPosY = document.querySelector('.js-video-y')
+  const videoSizeW = document.querySelector('.js-video-w')
+
+  const videoEl = document.querySelector('.js-content video')
+  const imageEl = document.querySelector('.js-content img')
+
+  if(imageEl) sectionImage.hidden = false
+  if(videoEl) sectionVideo.hidden = false
+
+  // changer
+  function designer(el, prop, val) {
+    el.style.setProperty(prop, val + 'px')
+
+    if(el.nodeName === "VIDEO") {
+      cssFieldVideo.value = `w-[${el.style.width}] left-[${el.style.left}] top-[${el.style.top}]`
+    } else {
+      cssFieldImage.value = `w-[${el.style.width}] left-[${el.style.left}] top-[${el.style.top}]`
+    }
+
+  }
+
+  // Change image
+  imageSizeW.addEventListener('input', (e) => designer(imageEl, 'width', e.target.value))
+  imagePosX.addEventListener('input', (e) => designer(imageEl, 'left', e.target.value))
+  imagePosY.addEventListener('input', (e) => designer(imageEl, 'top', e.target.value))
+
+  // Change video
+  videoSizeW.addEventListener('input', (e) => designer(videoEl, 'width', e.target.value))
+  videoPosX.addEventListener('input', (e) => designer(videoEl, 'left', e.target.value))
+  videoPosY.addEventListener('input', (e) => designer(videoEl, 'top', e.target.value))
+
+})
+</script>
+
+
+<style>
+
+  [popovertarget="designer"] {
+    anchor-name: --designer;
+  }
+
+  #designer {
+    position: absolute;
+    margin-block-start: .5rem;
+    position-anchor: --designer;
+    left: anchor(--designer left);
+    top: anchor(--designer bottom);
+  }
+
+  @position-try --bottom {
+    margin: 0 0 0 0;
+    left: anchor(--designer left);
+    top: anchor(--designer bottom);
+    margin-left: 0;
+  }
+
+
+  </style>
