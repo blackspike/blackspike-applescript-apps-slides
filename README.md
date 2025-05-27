@@ -1,6 +1,25 @@
-# blackspike applescript and ai apps
+# Make custom Mac apps: creating our own web dev tools
 
+We use #AI to write single-use #AppleScript mac applications to save time on routine web development tasks.
 
+For example: a drag-and-drop #macOS App to optimise and encode web ready videos.
+
+For more detail, code snippets and downloads, read the blog post at
+👉 https://www.blackspike.com/blog/creating-mac-app-webdev-tools-with-ai-and-applescript/
+
+Download the icon
+👉 https://www.blackspike.com/dropbox/icon.icns
+
+Download the example app
+👉 https://www.blackspike.com/dropbox/ffmpeg.app.zip
+
+00:03 What we're making – a single use app to make web-ready videos
+00:11 Using AI to generate AppleScript – the prompt we used
+00:24 Creating a macOS Application with the built-in Script Editor app
+00:35 Using the app – demo
+01:02 Adding a custom app icon
+
+👉 https://blackspike.com
 
 ```sh
 ## 🧞 Commands
