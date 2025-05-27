@@ -1,6 +1,10 @@
 # make your own macOS apps
 
-NOTE: you might need to Allow Audio and Video in the Autoplay settings in your browser's address bar!
+## Recording
+
+Set your screen recording view to 960px x 540px (we use [cleanshot.com](https://cleanshot.com))
+
+NOTE: you might need to Allow Audio and Video in the Autoplay settings in your browser's address bar
 
 NOTE: FireFox has a bug where it won't trigger video autoplay with page transitions, use Chrome unfortunately :(
 
