@@ -1,8 +1,9 @@
 {
-  "title": "blackspike mac apps",
-  "description": "A blackspike project",
-  "url": "https://blackspike-mac-apps.netlify.app",
-  "theme_color": "#1a1a1a",
+  "title": "make your own macOS apps",
+  "description": "How to create custom web dev tools with AI and AppleScript",
+  "url": "https://blackspike-mac-apps.netlify.app/",
+  "read_more_url": "https://www.blackspike.com/blog/creating-mac-app-webdev-tools-with-ai-and-applescript/",
+  "background_color": "#1e1e1e",
   "footer_links": [
     {
       "title": "download icon",
@@ -15,28 +16,6 @@
     {
       "title": "by blackspike.com",
       "link": "https://www.blackspike.com/blog/creating-mac-app-webdev-tools-with-ai-and-applescript/"
-    }
-  ],
-  "social_links": [
-    {
-      "title": "Twitter / X",
-      "link": "https://x.com/blackspikeltd/"
-    },
-    {
-      "title": "Mastodon",
-      "link": "https://mastodon.cloud/@blackspike"
-    },
-    {
-      "title": "GitHub",
-      "link": "https://github.com/blackspike/"
-    },
-    {
-      "title": "LinkedIn",
-      "link": "https://www.linkedin.com/company/blackspike"
-    },
-    {
-      "title": "Bluesky",
-      "link": "https://bsky.app/profile/blackspike.com/"
     }
   ]
 }

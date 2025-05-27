@@ -1,10 +1,35 @@
-# Make custom Mac apps: creating our own web dev tools
+# make your own macOS apps
+
+NOTE: you might need to Allow Audio and Video in the Autoplay settings in your browser's address bar!
+
+NOTE: FireFox has a bug where it won't trigger video autoplay with page transitions, use Chrome unfortunately :(
+
+## To make this slide app your own
+
+- Update the settings in `src/meta/settings.json`
+- Create the slide mdx in `src/content/slides/`
+- Create videos in `public/videos`
+- Create images in `src/assets/images/`
+- Add voice overs to `public/voice-over`
+- Replace the logo svg in `src/assets/images/logo.svg`
 
 ## View in your browser
 
 https://blackspike-mac-apps.netlify.app
 
-## YouTube script
+## Script for elevenlabs.io voice overs
+
+At blackspike design we often create single-use mac apps for automating repetitive tasks, like this app, to generate web-ready videos.
+
+AI is excellent at AppleScript, so prompt it for f f m-peg commands to optimise and convert dragged mp4's to web-m, and extract the first frame as an avif poster image.
+
+Paste the code into your Mac's built-in Script Editor app in your Utilities folder, and save it with the file format set to Application.
+
+Now drag any mp4 file onto the app for a collection of web-ready videos. As a bonus, we copy an html video tag snippet to your clipboard, ready to paste into a web page.
+
+Finally, we use a custom icon we drew in Inkscape – a different colour for each app. Download ours from the video description.
+
+## YouTube description
 
 We use #AI to write single-use #AppleScript mac applications to save time on routine web development tasks.
 

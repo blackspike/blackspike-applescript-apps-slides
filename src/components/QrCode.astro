@@ -1,6 +1,8 @@
 ---
 import QRCode from 'qrcode'
-const { url } = Astro.props
+import settings from "../content/meta/settings.json"
+
+const { url = settings.read_more_url } = Astro.props
 
 const opts = {
   errorCorrectionLevel: 'H',
@@ -15,7 +17,7 @@ const qrCode = await QRCode.toString(url, opts)
 
 ---
 
-<div class="qr-wrapper absolute right-0 top-0 w-[960px] h-[540px] flex gap-4 items-center justify-end z-10 !opacity-100 mix-blend-screen" set:html={qrCode} />
+<div class="qr-wrapper absolute right-0 top-0 w-[962px] h-[542px] flex gap-4 items-center justify-end z-10 !opacity-100 mix-blend-screen" set:html={qrCode} />
 
 <style is:global>
 

@@ -19,17 +19,17 @@ const customTransition = {
 }
 ---
 
-<section class="grid gap-3 lg:gap-0">
+<section class="grid">
 
   {
-    title && <h1 class="bs-h1 relative z-30" set:html={ title } transition:animate={ customTransition } />
+    title && <h1 class="bs-h1 relative z-30 bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text min-h-[1.1lh] text-transparent" set:html={ title } transition:animate={ customTransition } />
   }
 
   {
-    description && <p class="description bs-body-text relative z-30" set:html={ description } />
+    description && <p class="description bs-body-text relative z-30 [&_a]:text-sky-500 font-semibold" set:html={ description } />
   }
 
-  <div class="content text-2xl lg:text-xl text-bs-foreground-dark mt-1 text-balance">
+  <div class="content text-xl text-bs-foreground-dark mt-1 text-balance [&_a]:text-sky-500 font-semibold">
 
     <slot name="content" />
 
@@ -85,19 +85,9 @@ const customTransition = {
   }
 }
 
-h1 {
-  @apply bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text min-h-[1.1lh] text-transparent
-}
-
-h1 span { @apply  bg-bs-foreground-dark bg-clip-text }
-
-.description,
-.content { @apply [&_a]:text-sky-500 font-semibold }
-
 .content:empty { display: none;}
-
 .content pre,
-.content code { @apply text-violet-500 font-semibold text-lg lg:text-sm }
+.content code { @apply text-violet-500 font-semibold text-sm }
 .content strong { @apply text-bs-foreground-light }
 
 @keyframes fade-in {
@@ -124,6 +114,7 @@ h1 span { @apply  bg-bs-foreground-dark bg-clip-text }
   animation-timing-function: var(--ease-bs-spring);
   animation-delay: .5s;
 }
+
 .content img,
 .content svg  {
   max-width: none;

@@ -2,7 +2,6 @@
 import '../assets/css/global.css'
 import "../assets/css/base.css"
 import "../assets/css/typography.css"
-import "../assets/css/layout.css"
 import "../assets/css/buttons.css"
 
 import { Font } from 'astro:assets'
@@ -10,7 +9,7 @@ import { ClientRouter } from "astro:transitions"
 
 import settings from "../content/meta/settings.json"
 
-import Logo from '../assets/images/blackspike-logo.svg'
+import Logo from '../assets/images/logo.svg'
 import PrevNext from "../components/PrevNext.astro"
 
 const { title, description, image } = Astro.props
@@ -21,7 +20,7 @@ const descNoHtml = stripHTMLTags(description)
 ---
 
 <!doctype html>
-<html lang="en" class="bg-bs-surface-0 relative flex items-center justify-center h-dvh w-full">
+<html lang="en" style={ `--bg-color: ${settings.background_color}; background-color: oklch(from var(--bg-color) calc(l - 0.02) c h);` } class="relative flex items-center justify-center h-dvh w-full">
   <head>
 
     <meta charset="UTF-8" />
@@ -29,17 +28,17 @@ const descNoHtml = stripHTMLTags(description)
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <title>{ settings.title } - { titleNoHtml ? titleNoHtml : '10 cool modern css tips' }</title>
+    <title>{ titleNoHtml }</title>
 
     <meta name="description" content={ descNoHtml } />
-    <meta name="theme-color" content="#eee" />
+    <meta name="theme-color" content={ settings.background_color} />
 
-    <meta property="og:title" content={ titleNoHtml ? titleNoHtml : '10 cool modern css tips' } />
+    <meta property="og:title" content={ titleNoHtml } />
     <meta property="og:description" content={ descNoHtml } />
     <meta property="og:url" content={ settings.url }>
     <meta
       property="og:image"
-      content={ image ? image : settings.url + "/1200x630.jpg"}
+      content={ image ? image : settings.url + "1200x630.jpg"}
     />
 
     <Font cssVariable="--font-inter" preload />
@@ -49,17 +48,15 @@ const descNoHtml = stripHTMLTags(description)
 
   </head>
 
-  <body class="group relative">
+  <body class="overflow-hidden lg:overflow-auto relative">
 
-    <!-- Apology -->
-     <aside class="sr-only">
-      <h2>A11Y Apology</h2>
-      <p>Hi! This is website is more of a little tool that's basically like a slideshow, each slide with a demo of a css technique with a short video clip and a code sample screenshot, not very accessible! It's made to be screen-recorded rather than consumed.</p>
-      <p>If you're finding this difficult to read, please check out the source code and the blog post <a href="#footer">linked to in the footer</a></p>
-     </aside>
+    <!-- Mobile warning -->
+    <aside class="fixed top-0 left-0 lg:hidden h-dvh w-full bg-[var(--bg-color)] z-50 p-10 flex items-center">
+      <h2 class="text-3xl">Sorry, this app only works on large screens :(</h2>
+    </aside>
 
     <!-- Main -->
-    <main class="overflow-hidden w-[960px] h-[540px] z-10 isolate relative grid items-end p-10 bg-bs-surface-1">
+    <main class='hidden lg:grid overflow-hidden w-[962px] h-[542px] z-10 isolate relative items-end p-10 bg-[var(--bg-color)]'>
 
       <slot />
 
