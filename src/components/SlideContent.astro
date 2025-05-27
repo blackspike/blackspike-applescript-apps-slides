@@ -39,20 +39,16 @@ const customTransition = {
 
 
 <!-- Sound -->
-<audio src="/drop.mp3" hidden class="js-sound-image" />
-<audio src="/drop.mp3" hidden class="js-sound-video" />
+<audio src="/drop.mp3" hidden class="js-sound" />
 
 <script>
 
   document.addEventListener("astro:page-load", () => {
 
-    const animImages = document.querySelectorAll('img, svg',)
-    const animVideos = document.querySelectorAll('video')
-    const soundImage = document.querySelector('.js-sound-image')
-    const soundVideo = document.querySelector('.js-sound-video')
+    const animating = document.querySelectorAll('img, svg, video')
+    const soundFx = document.querySelector('.js-sound')
 
-    animImages.forEach(thing => thing.addEventListener('animationstart', () =>  soundImage.play() ))
-    animVideos.forEach(thing => thing.addEventListener('animationstart', () =>  soundVideo.play() ))
+    animating.forEach(thing => thing.addEventListener('animationstart', () =>  soundFx.play() ))
 
   })
 

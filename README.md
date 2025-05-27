@@ -45,12 +45,16 @@ Download the example app
 👉 https://www.blackspike.com/dropbox/ffmpeg.app.zip
 
 00:03 What we're making – a single use app to make web-ready videos
+
 00:11 Using AI to generate AppleScript – the prompt we used
+
 00:24 Creating a macOS Application with the built-in Script Editor app
+
 00:35 Using the app – demo
+
 01:02 Adding a custom app icon
 
-👉 https://blackspike.com
+👉 https://www.blackspike.com
 
 ```sh
 ## 🧞 Commands
