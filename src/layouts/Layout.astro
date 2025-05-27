@@ -59,21 +59,21 @@ const descNoHtml = stripHTMLTags(description)
      </aside>
 
     <!-- Main -->
-    <main class="overflow-hidden w-[540px] h-[960px] lg:w-[960px] lg:h-[540px] z-10 isolate relative grid items-end p-6 lg:p-10 bg-bs-surface-1">
+    <main class="overflow-hidden w-[960px] h-[540px] z-10 isolate relative grid items-end p-10 bg-bs-surface-1">
 
       <slot />
 
     </main>
 
     <!-- Nav -->
-    <div class="fixed top-6 right-6 lg:bottom-10 lg:right-10 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+    <div class="fixed top-10 right-10 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
 
       <PrevNext />
 
     </div>
 
     <!-- Logo -->
-    <a class="absolute top-6 left-6 lg:top-10 lg:left-10 z-20" href="/">
+    <a class="absolute top-10 left-10 z-20" href="/">
 
       <Logo height="48" />
 
