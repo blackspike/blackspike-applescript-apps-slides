@@ -1,9 +1,13 @@
 import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
+import netlify from '@astrojs/netlify'
 
 import mdx from "@astrojs/mdx";
 
 export default defineConfig({
+
+  adapter: netlify(),
+
   vite: {
     plugins: [tailwindcss()]
   },
