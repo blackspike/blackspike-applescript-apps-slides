@@ -17,7 +17,7 @@ const qrCode = await QRCode.toString(url, opts)
 
 ---
 
-<div class="qr-wrapper absolute right-0 top-0 w-[962px] h-[542px] flex gap-4 items-center justify-end z-10 !opacity-100 mix-blend-screen" set:html={qrCode} />
+<div class="qr-wrapper absolute right-0 top-0 w-[962px] h-[542px] flex gap-4 items-center justify-end z-10 !opacity-100 p-10 [&_svg]:border [&_svg]:border-bs-surface-3 [&_svg]:shadow-2xl [&_svg]:rounded-4xl" set:html={qrCode} />
 
 <style is:global>
 
@@ -25,7 +25,7 @@ const qrCode = await QRCode.toString(url, opts)
 
 .qr-wrapper {
 
-  svg { width: auto; height: 94%; animation-delay: 4.5s !important; }
+  svg { width: auto; height: 96%; animation-delay: 4.5s !important; }
 }
 
 </style>
