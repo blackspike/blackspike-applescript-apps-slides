@@ -1,0 +1,29 @@
+---
+import QRCode from 'qrcode'
+const { url } = Astro.props
+
+const opts = {
+  errorCorrectionLevel: 'H',
+  type: 'svg',
+  color: {
+    dark:"#999",
+    light:"#000"
+  }
+}
+
+const qrCode = await QRCode.toString(url, opts)
+
+---
+
+<div class="qr-wrapper absolute right-0 top-0 w-[960px] h-[540px] flex gap-4 items-center justify-end z-10 !opacity-100 mix-blend-screen" set:html={qrCode} />
+
+<style is:global>
+
+@import "tailwindcss";
+
+.qr-wrapper {
+
+  svg { width: auto; height: 94%; animation-delay: 4.5s !important; }
+}
+
+</style>

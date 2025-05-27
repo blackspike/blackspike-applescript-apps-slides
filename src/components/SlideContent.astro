@@ -37,6 +37,28 @@ const customTransition = {
 
 </section>
 
+
+<!-- Sound -->
+<audio src="/drop.mp3" hidden class="js-sound-image" />
+<audio src="/drop.mp3" hidden class="js-sound-video" />
+
+<script>
+
+document.addEventListener("astro:page-load", () => {
+
+  const animImages = document.querySelectorAll('img, svg',)
+  const animVideos = document.querySelectorAll('video')
+  const soundImage = document.querySelector('.js-sound-image')
+  const soundVideo = document.querySelector('.js-sound-video')
+
+  animImages.forEach(thing => thing.addEventListener('animationstart', () =>  soundImage.play() ))
+  animVideos.forEach(thing => thing.addEventListener('animationstart', () =>  soundVideo.play() ))
+
+})
+
+
+</script>
+
 <style is:global>
 
 @import "tailwindcss";
@@ -103,7 +125,8 @@ h1 span { @apply  bg-bs-foreground-dark bg-clip-text }
   animation-timing-function: var(--ease-bs-spring);
   animation-delay: .5s;
 }
-.content img {
+.content img,
+.content svg  {
   max-width: none;
   opacity: 0;
   animation-name: fade-in;
