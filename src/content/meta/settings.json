@@ -1,7 +1,7 @@
 {
   "title": "blackspike mac apps",
   "description": "A blackspike project",
-  "url": "https://css-tips.blackspike.com",
+  "url": "https://blackspike-mac-apps.netlify.app",
   "theme_color": "#1a1a1a",
   "footer_links": [
     {
@@ -14,7 +14,7 @@
     },
     {
       "title": "by blackspike.com",
-      "link": "https://www.blackspike.com/blog/blackspike-free-astro-tailwind-theme/"
+      "link": "https://www.blackspike.com/blog/creating-mac-app-webdev-tools-with-ai-and-applescript/"
     }
   ],
   "social_links": [
