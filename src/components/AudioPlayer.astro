@@ -6,6 +6,8 @@ const { audio, script } = Astro.props
 <audio class="js-audio-player" autoplay hidden src={ audio }  />
 
 <script>
+
+// Add highlight to next button when audio ends
 document.addEventListener("astro:page-load", () => {
   const audioPlayer = document.querySelector('.js-audio-player')
 
@@ -14,4 +16,5 @@ document.addEventListener("astro:page-load", () => {
     nextBtHighlight.classList.add('outline', 'outline-2', 'outline-offset-2', 'outline-red-500')
   })
 })
+
 </script>
