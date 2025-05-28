@@ -71,7 +71,7 @@ const apikey =  import.meta.env.ELEVENLABS_KE
     const nearestAudioPlayer = itemId.querySelector('.js-audio-player')
     const nearestDownloadBtn = itemId.querySelector('.js-audio-download-btn')
 
-    const voiceId = 'JBFqnCBsd6RMkjVDRZzb'
+    const voiceId = 'oQV06a7Gn8pbCJh5DXcO'
     const endpoint = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`
     const userApiKey = document.getElementById('user-api-key')?.value.trim() || localStorage.getItem('elevenlabs_api_key')
 
@@ -86,6 +86,7 @@ const apikey =  import.meta.env.ELEVENLABS_KE
     nearestAudioBtn.disabled = true
     nearestAudioBtn.classList.add('bg-gray-200','pointer-events-none','text-gray-500')
 
+
     // Fetch api
     const response = await fetch(endpoint, {
       method: 'POST',
@@ -95,13 +96,11 @@ const apikey =  import.meta.env.ELEVENLABS_KE
         'Accept': 'audio/mpeg',
       },
       body: JSON.stringify({
-        model_id: 'eleven_flash_v2_5',
+        model_id: 'eleven_multilingual_v2',
         text,
         voice_settings: {
-          stability: 0,
-          similarity_boost: 0,
           use_speaker_boost: true,
-          speed: 1.0,
+          speed: 1.20,
         }
       }),
     })
