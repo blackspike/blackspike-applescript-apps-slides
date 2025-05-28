@@ -3,9 +3,6 @@ import { getCollection } from "astro:content"
 import IconSpeech from '../assets/images/icon-speech.svg'
 
 let slides = (await getCollection("slides")).sort((a, b) => a.data.order - b.data.order)
-
-const apikey =  import.meta.env.ELEVENLABS_KE
-
 ---
 
 <div class="speech-wrapper">
@@ -21,61 +18,62 @@ const apikey =  import.meta.env.ELEVENLABS_KE
 
   </button>
 
-<!-- Modal -->
-<aside id="speech" popover class="anchor-modal bg-bs-surface-0 rounded-lg font-mono text-sm p-3">
+  <!-- Modal -->
+  <aside id="speech" popover class="anchor-modal bg-bs-surface-0 rounded-lg font-mono text-sm p-3">
 
-    <ul class="flex flex-col gap-1">
+      <ul class="flex flex-col gap-1">
 
-      { !apikey &&
         <input id="user-api-key" class="rounded bg-bs-surface-1 px-2 py-1 mt-1 text-xs" type="password" placeholder="Your elevenlabs api key">
-      }
 
-      {
-        slides.map( slide =>
+        {
+          slides.map( slide =>
 
-          <li class="flex gap-2" id={ 'item-' + slide.id }>
+            <li class="flex gap-2" id={ 'item-' + slide.id }>
 
-            <button
-            class="btn text-sm !py-2 !px-3 flex-1 js-audio-generate-btn !text-left"
-            type="button"
-            data-script={ slide.data.script }
-            data-apikey={ apikey }
-            data-id={ slide.id }
-            >
-              Generate "{ slide.data.title }" voice over
-            </button>
+              <button
+              class="btn text-sm !py-2 !px-3 flex-1 js-audio-generate-btn !text-left"
+              type="button"
+              data-script={ slide.data.script }
+              data-id={ slide.id }
+              >
+                Generate "{ slide.data.title }" voice over
+              </button>
 
-            <audio class="flex-1 js-audio-player" hidden controls></audio>
+              <audio class="flex-1 js-audio-player" hidden controls></audio>
 
-            <a class="btn js-audio-download-btn" hidden download>Download</a>
-          </li>
-        )
-      }
-      </ul>
+              <a class="btn js-audio-download-btn" hidden download>Download</a>
+            </li>
+          )
+        }
+        </ul>
 
-</aside>
+  </aside>
+
+</div>
 
 <script>
+
   if(localStorage.getItem('elevenlabs_api_key')) {
     document.getElementById('user-api-key').value = localStorage.getItem('elevenlabs_api_key')
   }
 
-  const audioPlayerBtns = document.querySelectorAll('.js-audio-generate-btn')
 
-  let audioUrl = ''
+  async function createAudioFileFromText(id, text) {
 
-  async function createAudioFileFromText(id, text, apikey) {
-
+    // Html
     const itemId = document.querySelector('#item-' + id)
     const nearestAudioBtn = itemId.querySelector('.js-audio-generate-btn')
     const nearestAudioPlayer = itemId.querySelector('.js-audio-player')
     const nearestDownloadBtn = itemId.querySelector('.js-audio-download-btn')
 
+    // settings
     const voiceId = 'oQV06a7Gn8pbCJh5DXcO'
     const endpoint = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`
-    const userApiKey = document.getElementById('user-api-key')?.value.trim() || localStorage.getItem('elevenlabs_api_key')
 
-    if(!userApiKey && !apikey) return
+    // Api key
+    const userApiKey = document.getElementById('user-api-key')?.value.trim()
+
+    if(!userApiKey) return
 
     if(userApiKey) {
       localStorage.setItem('elevenlabs_api_key', userApiKey)
@@ -86,12 +84,11 @@ const apikey =  import.meta.env.ELEVENLABS_KE
     nearestAudioBtn.disabled = true
     nearestAudioBtn.classList.add('bg-gray-200','pointer-events-none','text-gray-500')
 
-
     // Fetch api
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
-        'xi-api-key': apikey || userApiKey,
+        'xi-api-key': userApiKey,
         'Content-Type': 'application/json',
         'Accept': 'audio/mpeg',
       },
@@ -108,9 +105,9 @@ const apikey =  import.meta.env.ELEVENLABS_KE
     if (!response.ok) throw new Error('Failed to generate audio')
 
     const blob = await response.blob()
-    audioUrl = URL.createObjectURL(blob)
+    const audioUrl = URL.createObjectURL(blob)
 
-
+    // Update UI
     nearestAudioBtn.innerText = 'Regenerate voice over'
     nearestAudioBtn.disabled = false
     nearestAudioBtn.classList.remove('bg-gray-200','pointer-events-none','text-gray-500')
@@ -122,13 +119,14 @@ const apikey =  import.meta.env.ELEVENLABS_KE
     nearestDownloadBtn.hidden = false
   }
 
+  const audioPlayerBtns = document.querySelectorAll('.js-audio-generate-btn')
+
   audioPlayerBtns.forEach(audioPlayerBtn => {
     audioPlayerBtn.addEventListener('click', async function(e) {
 
       const id = e.target.dataset.id
       const script = e.target.dataset.script
-      const apikey = e.target.dataset.apikey
-      await createAudioFileFromText(id, script, apikey)
+      await createAudioFileFromText(id, script)
 
     })
   })
