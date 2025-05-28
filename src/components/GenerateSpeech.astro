@@ -1,41 +1,154 @@
 ---
-import { ElevenLabsClient } from '@elevenlabs/elevenlabs-js';
+import { getCollection } from "astro:content"
+import IconSpeech from '../assets/images/icon-speech.svg'
 
-import { writeFile } from 'fs/promises'
+let slides = (await getCollection("slides")).sort((a, b) => a.data.order - b.data.order)
 
-const { script } = Astro.props
-
-const elevenlabs = new ElevenLabsClient({ apiKey: import.meta.env.ELEVENLABS_KEY})
-
-const createAudioFileFromText = async (text) => {
-  return new Promise (async (resolve, reject) => {
-    try {
-      const audio = await elevenlabs.textToSpeech.convert('JBFqnCBsd6RMkjVDRZzb', {
-        // modelId: 'eleven_multilingual_v2',
-        modelId: 'eleven_flash_v2_5',
-        text,
-        outputFormat: 'mp3_44100_128',
-        // Optional voice settings that allow you to customize the output
-        voiceSettings: {
-          stability: 0,
-          similarityBoost: 0,
-          useSpeakerBoost: true,
-          speed: 1.0,
-        },
-      });
-
-
-      const fileName = `somefile.mp3`;
-      await writeFile(fileName, audio); // Write buffer directly to file
-      return fileName;
-
-    } catch (error) {
-      reject(error);
-    }
-  });
-};
-
-await createAudioFileFromText('hello world')
+const apikey =  import.meta.env.ELEVENLABS_KE
 
 ---
-sss
+
+<div class="speech-wrapper">
+
+  <!-- Button -->
+  <button
+    aria-label="Open speech"
+    popovertarget="speech" id="speech-btn"
+    class="anchor-button btn group !p-0 flex items-center justify-center h-12 w-12"
+    >
+
+    <IconSpeech class="opacity-60 m-auto group-active:translate-y-[1px]" height="24" width="24" />
+
+  </button>
+
+<!-- Modal -->
+<aside id="speech" popover class="anchor-modal bg-bs-surface-0 rounded-lg font-mono text-sm p-3">
+
+    <ul class="flex flex-col gap-1">
+
+      { !apikey &&
+        <input id="user-api-key" class="rounded bg-bs-surface-1 px-2 py-1 mt-1 text-xs" type="text" placeholder="Your elevenlabs api key">
+      }
+
+      {
+        slides.map( slide =>
+
+          <li class="flex gap-2" id={ 'item-' + slide.id }>
+
+            <button
+            class="btn text-sm !py-2 !px-3 flex-1 js-audio-generate-btn !text-left"
+            type="button"
+            data-script={ slide.data.script }
+            data-apikey={ apikey }
+            data-id={ slide.id }
+            >
+              Generate "{ slide.data.title }" voice over
+            </button>
+
+            <audio class="flex-1 js-audio-player" hidden controls></audio>
+
+            <a class="btn js-audio-download-btn" hidden download>Download</a>
+          </li>
+        )
+      }
+      </ul>
+
+</aside>
+
+<script>
+
+  const audioPlayerBtns = document.querySelectorAll('.js-audio-generate-btn')
+
+  let audioUrl = ''
+
+  async function createAudioFileFromText(id, text, apikey) {
+
+    const itemId = document.querySelector('#item-' + id)
+    const nearestAudioBtn = itemId.querySelector('.js-audio-generate-btn')
+    const nearestAudioPlayer = itemId.querySelector('.js-audio-player')
+    const nearestDownloadBtn = itemId.querySelector('.js-audio-download-btn')
+
+    const voiceId = 'JBFqnCBsd6RMkjVDRZzb'
+    const endpoint = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`
+    const userApiKey = document.getElementById('user-api-key')?.value.trim()
+
+    if(!userApiKey && !apikey) return
+
+    // Start
+    nearestAudioBtn.innerText = 'Generating voice over…'
+    nearestAudioBtn.disabled = true
+    nearestAudioBtn.classList.add('bg-gray-200','pointer-events-none','text-gray-500')
+
+    // Fetch api
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'xi-api-key': apikey || userApiKey,
+        'Content-Type': 'application/json',
+        'Accept': 'audio/mpeg',
+      },
+      body: JSON.stringify({
+        model_id: 'eleven_flash_v2_5',
+        text,
+        voice_settings: {
+          stability: 0,
+          similarity_boost: 0,
+          use_speaker_boost: true,
+          speed: 1.0,
+        }
+      }),
+    })
+
+    if (!response.ok) throw new Error('Failed to generate audio')
+
+    const blob = await response.blob()
+    audioUrl = URL.createObjectURL(blob)
+
+
+    nearestAudioBtn.innerText = 'Regenerate voice over'
+    nearestAudioBtn.disabled = false
+    nearestAudioBtn.classList.remove('bg-gray-200','pointer-events-none','text-gray-500')
+    nearestAudioPlayer.src = audioUrl
+    nearestAudioPlayer.hidden = false
+    nearestAudioPlayer.play()
+    nearestDownloadBtn.href = audioUrl
+    nearestDownloadBtn.setAttribute("download", id + '.mp3')
+    nearestDownloadBtn.hidden = false
+  }
+
+  audioPlayerBtns.forEach(audioPlayerBtn => {
+    audioPlayerBtn.addEventListener('click', async function(e) {
+
+      const id = e.target.dataset.id
+      const script = e.target.dataset.script
+      const apikey = e.target.dataset.apikey
+      await createAudioFileFromText(id, script, apikey)
+
+    })
+  })
+
+</script>
+
+
+<style>
+
+  [popovertarget="speech"] {
+    anchor-name: --speech;
+  }
+
+  #speech {
+    position: absolute;
+    margin-block-start: .5rem;
+    position-anchor: --speech;
+    left: anchor(--speech left);
+    top: anchor(--speech bottom);
+  }
+
+  @position-try --bottom {
+    margin: 0 0 0 0;
+    left: anchor(--speech left);
+    top: anchor(--speech bottom);
+    margin-left: 0;
+  }
+
+</style>

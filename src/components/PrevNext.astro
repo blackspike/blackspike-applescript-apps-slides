@@ -3,14 +3,14 @@
 import { getCollection } from "astro:content"
 import Arrow from '../assets/images/icon-arrow.svg'
 
-let posts = (await getCollection("slides")).sort((a, b) => a.data.order - b.data.order)
+let slides = (await getCollection("slides")).sort((a, b) => a.data.order - b.data.order)
 
-const index = posts.findIndex((post) => {
+const index = slides.findIndex((post) => {
   return Astro.request.url.includes(post.id)
 })
 
-const nextPost = posts[index + 1]
-const prevPost = posts[index - 1]
+const nextPost = slides[index + 1]
+const prevPost = slides[index - 1]
 ---
 
 <nav class="prev-next select-none font-semibold flex justify-center gap-3">
@@ -19,7 +19,7 @@ const prevPost = posts[index - 1]
   <a
     href={ prevPost?.id ? `/slides/${prevPost.id}/` : '/' }
     aria-label="Previous slide"
-    class="js-prev bs-btn group !p-0 flex items-center justify-center h-12 w-12"
+    class="js-prev btn group !p-0 flex items-center justify-center h-12 w-12"
     >
 
     <Arrow class="opacity-60 h-4 w-4 -translate-x-[2px] group-active:translate-y-[1px]" height="16" width="25" />
@@ -30,7 +30,7 @@ const prevPost = posts[index - 1]
   <a
     href={ nextPost?.id ? `/slides/${nextPost.id}/` : '/' }
     aria-label="Next slide"
-    class="js-next bs-btn !p-0 flex items-center justify-center h-12 w-12 -scale-x-100"
+    class="js-next btn !p-0 flex items-center justify-center h-12 w-12 -scale-x-100"
     >
 
     <Arrow class="opacity-60 h-4 w-4 -translate-x-[2px] group-active:translate-y-[1px]" height="16" width="25" />

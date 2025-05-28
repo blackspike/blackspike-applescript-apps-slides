@@ -11,6 +11,7 @@ import Logo from '../assets/images/logo.svg'
 import PrevNext from "../components/PrevNext.astro"
 
 import Designer from "../components/Designer.astro"
+import GenerateSpeech from "../components/GenerateSpeech.astro"
 
 const { title, description, image } = Astro.props
 
@@ -79,9 +80,10 @@ const descNoHtml = stripHTMLTags(description)
 
     </footer>
 
-    <!-- Designer -->
-    <div class="fixed top-10 left-10 z-10">
+    <!-- Controls -->
+    <div class="fixed top-10 left-10 z-10 select-none  flex justify-center gap-3">
       <Designer />
+      <GenerateSpeech />
     </div>
 
   </body>

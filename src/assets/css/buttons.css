@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @reference "./global.css";
 
-.bs-btn {
+.btn {
 
   @apply
     active:translate-y-[1px]
