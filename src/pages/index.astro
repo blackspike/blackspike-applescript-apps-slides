@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import SlideContent from "../components/SlideContent.astro"
+import AudioPlayer from "../components/AudioPlayer.astro"
 import settings from "../content/meta/settings.json"
 
 import { getEntry, render } from 'astro:content'
@@ -24,7 +25,9 @@ const { Content } = await render(entry)
 
   <!-- Audio -->
   { entry.data.audio &&
-    <audio src={ entry.data.audio } autoplay />
+    <AudioPlayer audio={ entry.data.audio } ></AudioPlayer>
   }
+
+
 
 </Layout>

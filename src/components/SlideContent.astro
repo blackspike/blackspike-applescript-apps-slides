@@ -21,14 +21,17 @@ const customTransition = {
 
 <section class="js-content grid">
 
+  <!-- Title -->
   {
     title && <h1 class="bs-h1 relative z-30 bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text min-h-[1.1lh] text-transparent font-display font-semibold text-balance text-6xl tracking-tight" set:html={ title } transition:animate={ customTransition } />
   }
 
+  <!-- Desc -->
   {
     description && <p class="description bs-body-text relative z-30 [&_a]:text-sky-500 font-semibold font-body text-pretty text-2xl" set:html={ description } />
   }
 
+  <!-- Content -->
   <div class="content text-xl text-bs-foreground-dark mt-1 text-balance [&_a]:text-sky-500 font-semibold">
 
     <slot name="content" />
@@ -37,16 +40,15 @@ const customTransition = {
 
 </section>
 
-
-<!-- Sound -->
-<audio src="/drop.mp3" hidden class="js-sound" />
+<!-- Sound fx -->
+<audio src="/drop.mp3" hidden class="js-sound-fx" />
 
 <script>
 
   document.addEventListener("astro:page-load", () => {
 
     const animating = document.querySelectorAll('img, svg, video')
-    const soundFx = document.querySelector('.js-sound')
+    const soundFx = document.querySelector('.js-sound-fx')
 
     animating.forEach(thing => thing.addEventListener('animationstart', () =>  soundFx.play() ))
 
