@@ -1,27 +1,28 @@
 ---
-const { audio } = Astro.props
+const { audio, script } = Astro.props
 ---
 
 <!-- Audio -->
 <audio class="js-audio-player" autoplay hidden src={ audio }  />
 
-<script is:inline>
+<script>
 
-const audioPlayer = document.querySelector('.js-audio-player')
-const audioPlayerPromise = audioPlayer.play()
+  const audioPlayer = document.querySelector('.js-audio-player')
 
-if (audioPlayerPromise !== undefined) {
-  audioPlayerPromise.then(_ => {
-    // Autoplay started!
-  }).catch(error => {
-    // Autoplay not allowed!
-    const htmlAlert = `
-      <aside class="js-muted-alert p-3 fixed text-sm font-semibold bottom-10 left-10 rounded-lg bg-red-300 text-red-800 max-w-60 shadow z-50">
-        Your audio is muted! Please allow from your address bar and reload.
-      </aside>
-    `
-    document.body.insertAdjacentHTML('beforeend', htmlAlert)
-  })
-}
+  const audioPlayerPromise = audioPlayer.play()
+
+  if (audioPlayerPromise !== undefined) {
+    audioPlayerPromise.then(_ => {
+      // Autoplay started!
+    }).catch(error => {
+      // Autoplay not allowed!
+      const htmlAlert = `
+        <aside class="js-muted-alert p-3 fixed text-sm font-semibold bottom-10 left-10 rounded-lg bg-red-300 text-red-800 max-w-60 shadow z-50">
+          Your audio is muted! Please allow from your address bar and reload.
+        </aside>
+      `
+      document.body.insertAdjacentHTML('beforeend', htmlAlert)
+    })
+  }
 
 </script>

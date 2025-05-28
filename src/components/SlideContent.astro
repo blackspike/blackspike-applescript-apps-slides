@@ -49,6 +49,7 @@ const customTransition = {
 
     const animating = document.querySelectorAll('img, svg, video')
     const soundFx = document.querySelector('.js-sound-fx')
+    soundFx.volume = 0.2
 
     animating.forEach(thing => thing.addEventListener('animationstart', () =>  soundFx.play() ))
 
@@ -110,7 +111,7 @@ const customTransition = {
   animation-iteration-count: once;
   animation-fill-mode: forwards;
   animation-timing-function: var(--ease-bs-spring);
-  animation-delay: .5s;
+  animation-delay: .75s;
 }
 
 .content img,
@@ -122,6 +123,6 @@ const customTransition = {
   animation-iteration-count: once;
   animation-fill-mode: forwards;
   animation-timing-function: var(--ease-bs-spring);
-  animation-delay: 1.5s;
+  animation-delay: 1.75s;
 }
 </style>

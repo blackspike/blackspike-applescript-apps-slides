@@ -13,19 +13,8 @@ const slides = defineCollection({
   }),
 })
 
-const pages = defineCollection({
-  loader: glob({ pattern: "**/*.mdx", base: "./src/content/pages" }),
-  schema: z.object({
-    title: z.string(),
-    image: z.string().optional(),
-    audio: z.string().optional(),
-    description: z.string().optional(),
-    script: z.string().optional(),
-  }),
-})
-
 const meta = defineCollection({
   loader: file("src/content/meta/settings.json"),
 })
 
-export const collections = { slides, pages, meta }
+export const collections = { slides, meta }

@@ -1,33 +1,70 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import SlideContent from "../components/SlideContent.astro"
-import AudioPlayer from "../components/AudioPlayer.astro"
+import Layout from "../layouts/Layout.astro"
 import settings from "../content/meta/settings.json"
-
-import { getEntry, render } from 'astro:content'
-const entry = await getEntry('pages', 'index')
-const { Content } = await render(entry)
-
+import VideoPlayer from '../components/VideoPlayer.astro'
 ---
 
 <Layout title={ settings.title } description={ settings.description }>
 
-  <SlideContent
-    title={ settings.title }
-    description={ settings.description }
-  >
 
-  <Fragment slot="content">
-    <Content />
-  </Fragment>
+  <section transition:animate="fade" class="js-home-container flex flex-col gap-6 justify-center p-10 pt-60 items-center absolute top-0 left-0 w-full h-full">
 
-  </SlideContent>
+    <VideoPlayer
+      classes="w-[962px] left-0 top-0 opacity-10 pointer-events-none"
+      name="ffmpeg-app-demo.optim"
+    />
 
-  <!-- Audio -->
-  { entry.data.audio &&
-    <AudioPlayer audio={ entry.data.audio } ></AudioPlayer>
-  }
+    <header class="flex flex-col gap-3 justify-center items-center">
+
+      <!-- Title -->
+      <h1 class="bs-h1 relative z-30 bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text min-h-[1.1lh] text-transparent  text-center font-display font-semibold text-balance text-6xl tracking-tight" set:html={ settings.title } />
+
+      <!-- Desc -->
+      <p class="description bs-body-text relative z-30 [&_a]:text-sky-500 font-semibold font-body text-pretty text-2xl text-center" set:html={ settings.description } />
+
+    </header>
 
 
+    <button type="button" class="js-start bs-btn !bg-red-600 !text-white">Start video</button>
+
+    <script>
+
+      document.addEventListener("astro:page-load", () => {
+
+        const startButton = document.querySelector('.js-start')
+        const jsHomeContainer = document.querySelector('.js-home-container')
+
+        startButton.addEventListener('click', (e) => {
+          e.preventDefault
+          jsHomeContainer.classList.add('fader')
+          jsHomeContainer.addEventListener('animationend', () => window.location.href = "/slides/intro" )
+        })
+
+      })
+    </script>
+
+  </section>
 
 </Layout>
+
+<style>
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fader {
+  animation-name: fade-out;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+</style>

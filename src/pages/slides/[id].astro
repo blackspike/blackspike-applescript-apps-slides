@@ -33,8 +33,8 @@ const { Content } = await render(entry)
   </SlideContent>
 
   <!-- Audio -->
-  { entry.data.audio &&
-    <AudioPlayer audio={ entry.data.audio } ></AudioPlayer>
+  { entry.data.script &&
+    <AudioPlayer script={ entry.data.script }  audio={ entry.data.audio } ></AudioPlayer>
   }
 
 
