@@ -16,8 +16,8 @@ if (audioPlayerPromise !== undefined) {
   }).catch(error => {
     // Autoplay not allowed!
     const htmlAlert = `
-      <aside class="js-muted-alert p-3 fixed bottom-10 left-10 rounded-lg bg-red-300 text-red-800 max-w-60 shadow z-50">
-        Your audio is muted, please allow from your address bar and reload
+      <aside class="js-muted-alert p-3 fixed text-sm font-semibold bottom-10 left-10 rounded-lg bg-red-300 text-red-800 max-w-60 shadow z-50">
+        Your audio is muted! Please allow from your address bar and reload.
       </aside>
     `
     document.body.insertAdjacentHTML('beforeend', htmlAlert)
