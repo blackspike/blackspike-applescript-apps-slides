@@ -6,7 +6,7 @@ import VideoPlayer from '../components/VideoPlayer.astro'
 
 <Layout title={ settings.title } description={ settings.description }>
 
-  <section class="flex flex-col gap-6 justify-center p-10 pt-60 items-center absolute top-0 left-0 w-full h-full">
+  <section class="js-wrapper flex flex-col gap-6 justify-center p-10 pt-60 items-center absolute top-0 left-0 w-full h-full">
 
     <VideoPlayer
       classes="w-[962px] left-0 top-0 opacity-10 pointer-events-none"
@@ -27,5 +27,13 @@ import VideoPlayer from '../components/VideoPlayer.astro'
     <a href="/slides/intro" class="btn !bg-red-600 !text-white">Start video</a>
 
   </section>
+
+  <script>
+    // helps find screen corners!
+    const urlSearchParams = new URLSearchParams(window.location.search)
+    const params = Object.fromEntries(urlSearchParams.entries())
+    if(params.hide === 'true') document.querySelector('.js-wrapper')?.classList.add('opacity-0')
+    if(params.start === 'true') document.querySelector('.js-wrapper')?.classList.add('invert','brightness-5')
+  </script>
 
 </Layout>
