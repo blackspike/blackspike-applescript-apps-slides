@@ -1,7 +1,5 @@
 ---
 import '../assets/css/global.css'
-import "../assets/css/base.css"
-import "../assets/css/typography.css"
 import "../assets/css/buttons.css"
 
 import { Font } from 'astro:assets'
@@ -22,7 +20,7 @@ const descNoHtml = stripHTMLTags(description)
 ---
 
 <!doctype html>
-<html lang="en" style={ `--bg-color: ${settings.background_color}; background-color: oklch(from var(--bg-color) calc(l - 0.02) c h);` } class="relative flex items-center justify-center h-dvh w-full">
+<html lang="en" style={ `--bg-color: ${settings.background_color}; background-color: oklch(from var(--bg-color) calc(l - 0.02) c h);` } class="scheme-dark scroll-pt-8 scroll-smooth relative flex items-center justify-center h-dvh w-full">
   <head>
 
     <meta charset="UTF-8" />
@@ -50,7 +48,7 @@ const descNoHtml = stripHTMLTags(description)
 
   </head>
 
-  <body class="overflow-hidden lg:overflow-auto relative">
+  <body class="overflow-hidden lg:overflow-auto relative text-bs-foreground-light font-body">
 
     <!-- Mobile warning -->
     <aside class="fixed top-0 left-0 lg:hidden h-dvh w-full bg-[var(--bg-color)] z-50 p-10 flex items-center">
