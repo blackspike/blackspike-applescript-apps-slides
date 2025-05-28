@@ -73,18 +73,18 @@ const descNoHtml = stripHTMLTags(description)
       <Logo height="48" />
     </a>
 
+    <!-- Controls -->
+    <div class="fixed top-10 left-10 z-10 select-none flex justify-center gap-3">
+      <GenerateSpeech />
+      <Designer />
+    </div>
+
     <!-- Footer -->
     <footer class="font-semibold text-sm fixed bottom-10 right-10 z-0 flex gap-3 flex-wrap [&_a]:hover:text-sky-500" id="footer">
 
       { settings.footer_links.map( item => <a href={ item.link }> { item.title } </a> ) }
 
     </footer>
-
-    <!-- Controls -->
-    <div class="fixed top-10 left-10 z-10 select-none  flex justify-center gap-3">
-      <Designer />
-      <GenerateSpeech />
-    </div>
 
   </body>
 </html>

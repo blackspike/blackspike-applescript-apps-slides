@@ -7,7 +7,7 @@ import IconDesign from '../assets/images/icon-design.svg'
 <button
   aria-label="Open designer"
   popovertarget="designer" id="designer-btn"
-  class="anchor-button btn group !p-0 flex items-center justify-center h-12 w-12"
+  class="js-designer-btn anchor-button btn group !p-0 flex items-center justify-center h-12 w-12"
   >
 
   <IconDesign class="opacity-60 m-auto group-active:translate-y-[1px]" height="24" width="24" />
@@ -76,6 +76,7 @@ document.addEventListener("astro:page-load", () => {
 
   const sectionImage = document.querySelector('.js-section-image')
   const sectionVideo = document.querySelector('.js-section-video')
+  const designerBtn = document.querySelector('.js-designer-btn')
 
   const cssFieldImage = document.querySelector('.js-css-image')
   const cssFieldVideo = document.querySelector('.js-css-video')
@@ -93,6 +94,7 @@ document.addEventListener("astro:page-load", () => {
 
   if(imageEl) sectionImage.hidden = false
   if(videoEl) sectionVideo.hidden = false
+  if(!imageEl && !videoEl) designerBtn.hidden = true
 
   // changer
   function designer(el, prop, val) {

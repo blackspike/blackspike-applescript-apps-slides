@@ -6,8 +6,6 @@ script: "AI is excellent at AppleScript, so prompt it for f f m-peg commands to 
 order: 1
 ---
 
-import { Image } from 'astro:assets';
-import screen from '../../assets/images/prompt.png'
 import VideoPlayer from '../../components/VideoPlayer.astro'
 
 Also extract the first frame to an avif poster image
@@ -17,8 +15,8 @@ Also extract the first frame to an avif poster image
   name="mac-app-chatgpt.optim"
 />
 
-<Image
-  src={screen}
-  alt="code screenshot"
+<img
+  src="/images/prompt.png"
+  alt=""
   class="rounded-xl absolute z-1 hover:z-10 w-[460px] left-[220px] top-[0px]"
 />

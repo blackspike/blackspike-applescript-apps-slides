@@ -6,8 +6,7 @@ import VideoPlayer from '../components/VideoPlayer.astro'
 
 <Layout title={ settings.title } description={ settings.description }>
 
-
-  <section transition:animate="fade" class="js-home-container flex flex-col gap-6 justify-center p-10 pt-60 items-center absolute top-0 left-0 w-full h-full">
+  <section class="flex flex-col gap-6 justify-center p-10 pt-60 items-center absolute top-0 left-0 w-full h-full">
 
     <VideoPlayer
       classes="w-[962px] left-0 top-0 opacity-10 pointer-events-none"
@@ -25,46 +24,8 @@ import VideoPlayer from '../components/VideoPlayer.astro'
     </header>
 
 
-    <button type="button" class="js-start btn !bg-red-600 !text-white">Start video</button>
-
-    <script>
-
-      document.addEventListener("astro:page-load", () => {
-
-        const startButton = document.querySelector('.js-start')
-        const jsHomeContainer = document.querySelector('.js-home-container')
-
-        startButton.addEventListener('click', (e) => {
-          e.preventDefault
-          jsHomeContainer.classList.add('fader')
-          jsHomeContainer.addEventListener('animationend', () => window.location.href = "/slides/intro" )
-        })
-
-      })
-    </script>
+    <a href="/slides/intro" class="btn !bg-red-600 !text-white">Start video</a>
 
   </section>
 
 </Layout>
-
-<style>
-
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.fader {
-  animation-name: fade-out;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-
-</style>

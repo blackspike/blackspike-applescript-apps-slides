@@ -13,8 +13,8 @@ NOTE: FireFox has a bug where it won't trigger video autoplay with page transiti
 - Update the settings in `src/meta/settings.json`
 - Create the slide mdx in `src/content/slides/`
 - Create videos in `public/videos`
-- Create images in `src/assets/images/`
-- Add voice overs to `public/voice-over`
+- Create images in `public/images/`
+- Generate voice overs with your [elevenlabs](https://elevenlabs.io/) api key and save them to `public/voice-over`
 - Replace the logo svg in `src/assets/images/logo.svg`
 
 ## View in your browser

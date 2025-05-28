@@ -6,8 +6,6 @@ audio: "/voice-over/5-mac-app-icon.mp3"
 order: 4
 ---
 
-import { Image } from 'astro:assets';
-import screen from '../../assets/images/webdev-app-folder.png'
 import VideoPlayer from '../../components/VideoPlayer.astro'
 
 Download our icon from <a href="https://www.blackspike.com/dropbox/icon.icns">blackspike.com/dropbox/icon.icns</a>
@@ -17,8 +15,8 @@ Download our icon from <a href="https://www.blackspike.com/dropbox/icon.icns">bl
   name="mac-app-icon.optim"
 />
 
-<Image
-  src={screen}
-  alt="code screenshot"
+<img
+  src="/images/webdev-app-folder.png"
+  alt=""
   class="rounded-lg drop-shadow-xl absolute z-1 hover:z-10 w-[430px] left-[36px] top-[120px] brightness-[1.2]"
 />

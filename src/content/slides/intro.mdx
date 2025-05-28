@@ -6,20 +6,17 @@ script: "At blackspike design we often create single-use mac apps for automating
 order: 0
 ---
 
-import { Image } from 'astro:assets';
-import screen from '../../assets/images/mac-app-icons.png'
 import VideoPlayer from '../../components/VideoPlayer.astro'
 
 <a href='https://www.blackspike.com'>by blackspike.com</a>
-
 
 <VideoPlayer
   classes="w-[551px] left-[387px] top-[28px]"
   name="ffmpeg-app-demo.optim"
 />
 
-<Image
-  src={screen}
-  alt="app icons"
+<img
+  src="/images/mac-app-icons.png"
+  alt=""
   class="drop-shadow-xl absolute z-1 hover:z-10 w-[308px] left-[38px] top-[148px]"
 />
