@@ -1,4 +1,4 @@
-# make your own macOS apps
+# Make custom macOS apps: creating our own web development tools
 
 ## Recording
 
@@ -23,9 +23,9 @@ https://blackspike-mac-apps.netlify.app
 
 ## YouTube description
 
-We use #AI to write single-use #AppleScript mac applications to save time on routine web development tasks.
+### [Watch this on YouTube](https://youtu.be/kMqj5F2YwVQ)
 
-For example: a drag-and-drop #macOS App to optimise and encode web ready videos.
+We use #AI to write single-use #AppleScript macOS applications to automate routine web development tasks. In this example: a drag-and-drop app to encode website-ready video to optimised mp4, webm, and avif.
 
 For more detail, code snippets and downloads, read the blog post at
 👉 https://www.blackspike.com/blog/creating-mac-app-webdev-tools-with-ai-and-applescript/
@@ -36,17 +36,48 @@ Download the icon
 Download the example app
 👉 https://www.blackspike.com/dropbox/ffmpeg.app.zip
 
-00:03 What we're making – a single use app to make web-ready videos
+00:01 What we're making – a single use app to make web-ready videos
 
-00:11 Using AI to generate AppleScript – the prompt we used
+00:08 Using AI to generate AppleScript – the prompt we used
 
-00:24 Creating a macOS Application with the built-in Script Editor app
+00:20 Creating a macOS Application with the built-in Script Editor app
 
-00:35 Using the app – demo
+00:31 Using the app – demo
 
-01:02 Adding a custom app icon
+00:13 Adding a custom app icon
 
 👉 https://www.blackspike.com
+
+## Script
+
+At blackspike design we often create single-use mac apps for automating repetitive tasks, like this app, to generate web-ready videos.
+
+AI is excellent at AppleScript, so prompt it for ffmpeg commands to optimise and convert dragged mp4's to webm, and extract the first frame as an avif poster image.
+
+Paste the code into your Mac's built-in Script Editor app in your Utilities folder, and save it with the file format set to Application.
+
+Now drag any mp4 file onto the app for a collection of web-ready videos. As a bonus, we copy an html video tag snippet to your clipboard, ready to paste into a web page.
+
+Finally, we use a custom icon we drew in Inkscape – a different colour for each app. Download ours from the video description.
+
+Don't forget to like and subscribe for more videos like this. Check out our blog at blackspike.com. Thanks for watching!
+
+## Social posts
+
+Behold! A second video in our pivot to video experiment. This one is about how we use AI to write single-use AppleScript macOS applications to encode web-ready video to optimised mp4, webm, and avif.
+
+https://youtu.be/kMqj5F2YwVQ
+
+#webdev #macos #applescript #ffmpeg #webm #avif #ai  #grind #pivotingWildly
+
+Or, like a normal person who prefers to read, rather than watch, read the blog post at
+
+https://www.blackspike.com/blog/creating-mac-app-webdev-tools-with-ai-and-applescript/
+
+#webdev #macos #applescript #ffmpeg #webm #avif #ai #automation #grind #pivotingWildly
+
+
+
 
 ```sh
 ## 🧞 Commands
