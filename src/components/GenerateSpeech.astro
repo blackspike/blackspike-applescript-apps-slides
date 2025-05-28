@@ -27,7 +27,7 @@ const apikey =  import.meta.env.ELEVENLABS_KE
     <ul class="flex flex-col gap-1">
 
       { !apikey &&
-        <input id="user-api-key" class="rounded bg-bs-surface-1 px-2 py-1 mt-1 text-xs" type="text" placeholder="Your elevenlabs api key">
+        <input id="user-api-key" class="rounded bg-bs-surface-1 px-2 py-1 mt-1 text-xs" type="password" placeholder="Your elevenlabs api key">
       }
 
       {
@@ -56,6 +56,9 @@ const apikey =  import.meta.env.ELEVENLABS_KE
 </aside>
 
 <script>
+  if(localStorage.getItem('elevenlabs_api_key')) {
+    document.getElementById('user-api-key').value = localStorage.getItem('elevenlabs_api_key')
+  }
 
   const audioPlayerBtns = document.querySelectorAll('.js-audio-generate-btn')
 
@@ -70,9 +73,13 @@ const apikey =  import.meta.env.ELEVENLABS_KE
 
     const voiceId = 'JBFqnCBsd6RMkjVDRZzb'
     const endpoint = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`
-    const userApiKey = document.getElementById('user-api-key')?.value.trim()
+    const userApiKey = document.getElementById('user-api-key')?.value.trim() || localStorage.getItem('elevenlabs_api_key')
 
     if(!userApiKey && !apikey) return
+
+    if(userApiKey) {
+      localStorage.setItem('elevenlabs_api_key', userApiKey)
+    }
 
     // Start
     nearestAudioBtn.innerText = 'Generating voice over…'
