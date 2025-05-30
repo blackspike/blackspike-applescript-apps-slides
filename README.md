@@ -4,6 +4,10 @@
 
 Set your screen recording view to 960px x 540px (we use [cleanshot.com](https://cleanshot.com))
 
+add /?highlight=true to show the edges of the canvas more clearly to line up your screen recorder
+
+add /?start=true to minimise the home canvas before recording
+
 NOTE: you might need to Allow Audio and Video in the Autoplay settings in your browser's address bar
 
 NOTE: FireFox has a bug where it won't trigger video autoplay with page transitions, use Chrome unfortunately :(

@@ -12,9 +12,9 @@
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/netlify": "^6.3.4",
     "@elevenlabs/elevenlabs-js": "^2.1.0",
-    "@tailwindcss/vite": "^4.1.7",
-    "astro": "^5.8.0",
+    "@tailwindcss/vite": "^4.1.8",
+    "astro": "^5.8.1",
     "qrcode": "^1.5.4",
-    "tailwindcss": "^4.1.7"
+    "tailwindcss": "^4.1.8"
   }
 }
