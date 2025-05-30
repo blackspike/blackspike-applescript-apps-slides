@@ -10,21 +10,21 @@ import VideoPlayer from '../components/VideoPlayer.astro'
 
     <VideoPlayer
       classes="w-[962px] left-0 top-0 opacity-10 pointer-events-none"
-      name="ffmpeg-app-demo.optim"
+      name="3-try-the-app"
     />
 
     <header class="flex flex-col gap-3 justify-center items-center">
 
       <!-- Title -->
-      <h1 class="bs-h1 relative z-30 bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text min-h-[1.1lh] text-transparent  text-center font-display font-semibold text-balance text-6xl tracking-tight" set:html={ settings.title } />
+      <h1 class="relative z-30 bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent text-center font-display font-semibold text-balance text-6xl tracking-tight min-h-[1.1lh] " set:html={ settings.title } />
 
       <!-- Desc -->
-      <p class="description bs-body-text relative z-30 [&_a]:text-sky-500 font-semibold font-body text-pretty text-2xl text-center" set:html={ settings.description } />
+      <p class="description bs-body-text relative z-30 [&_a]:underline font-semibold font-body text-pretty text-2xl text-center" set:html={ settings.description } />
 
     </header>
 
 
-    <a href="/slides/intro" class="btn !bg-red-600 !text-white">Start video</a>
+    <a href="/slides/0-intro" class="btn !bg-bs-surface-0 !text-white">Start video</a>
 
   </section>
 

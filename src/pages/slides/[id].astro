@@ -33,9 +33,6 @@ const { Content } = await render(entry)
   </SlideContent>
 
   <!-- Audio -->
-  { entry.data.script &&
-    <AudioPlayer script={ entry.data.script }  audio={ entry.data.audio } ></AudioPlayer>
-  }
-
+  <AudioPlayer audio={ `/voice-over/${entry.id}.mp3` } ></AudioPlayer>
 
 </Layout>

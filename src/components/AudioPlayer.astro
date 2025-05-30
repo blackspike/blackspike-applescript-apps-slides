@@ -1,5 +1,5 @@
 ---
-const { audio, script } = Astro.props
+const { audio } = Astro.props
 ---
 
 <!-- Audio -->
@@ -13,7 +13,8 @@ document.addEventListener("astro:page-load", () => {
 
   audioPlayer.addEventListener('ended', () => {
     const nextBtHighlight = document.querySelector('.js-next')
-    nextBtHighlight.classList.add('outline', 'outline-2', 'outline-offset-2', 'outline-red-500')
+    nextBtHighlight.classList.add('outline', 'outline-2', 'outline-offset-2', 'outline-green-500')
+    nextBtHighlight.focus()
   })
 })
 

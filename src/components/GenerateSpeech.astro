@@ -19,11 +19,13 @@ let slides = (await getCollection("slides")).sort((a, b) => a.data.order - b.dat
   </button>
 
   <!-- Modal -->
-  <aside id="speech" popover class="anchor-modal bg-bs-surface-0 rounded-lg font-mono text-sm p-3">
+  <aside id="speech" popover class="anchor-modal shadow-2xl bg-bs-surface-2 rounded-lg font-mono text-sm p-3">
 
-      <ul class="flex flex-col gap-1">
+      <ul class="flex flex-col gap-2">
 
-        <input id="user-api-key" class="rounded bg-bs-surface-1 px-2 py-1 mt-1 text-xs" type="password" placeholder="Your elevenlabs api key">
+        <li>
+          <input id="user-api-key" class="w-full rounded bg-bs-surface-0 px-2 py-2 mt-1 text-xs" type="password" placeholder="Your elevenlabs api key">
+        </li>
 
         {
           slides.map( slide =>
@@ -36,7 +38,7 @@ let slides = (await getCollection("slides")).sort((a, b) => a.data.order - b.dat
               data-script={ slide.data.script }
               data-id={ slide.id }
               >
-                Generate "{ slide.data.title }" voice over
+                Generate "{ slide.data.title }" VO
               </button>
 
               <audio class="flex-1 js-audio-player" hidden controls></audio>

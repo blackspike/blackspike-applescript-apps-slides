@@ -23,12 +23,12 @@ const customTransition = {
 
   <!-- Title -->
   {
-    title && <h1 class="bs-h1 relative z-30 bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text min-h-[1.1lh] text-transparent font-display font-semibold text-balance text-6xl tracking-tight" set:html={ title } transition:animate={ customTransition } />
+    title && <h1 class="relative z-30 bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent font-display font-semibold text-balance text-6xl tracking-tight min-h-[1.1lh] " set:html={ title } transition:animate={ customTransition } />
   }
 
   <!-- Desc -->
   {
-    description && <p class="description bs-body-text relative z-30 [&_a]:text-sky-500 font-semibold font-body text-pretty text-2xl" set:html={ description } />
+    description && <p class="description bs-body-text relative z-30 [&_a]:underline font-semibold font-body text-pretty text-2xl" set:html={ description } />
   }
 
   <!-- Content -->
@@ -104,6 +104,7 @@ const customTransition = {
 }
 
 .content video {
+  position: absolute;
   max-width: none;
   opacity: 0;
   animation-name: fade-in;
@@ -116,6 +117,8 @@ const customTransition = {
 
 .content img,
 .content svg  {
+  z-index: 1;
+  position: absolute;
   max-width: none;
   opacity: 0;
   animation-name: fade-in;
@@ -124,5 +127,9 @@ const customTransition = {
   animation-fill-mode: forwards;
   animation-timing-function: var(--ease-bs-spring);
   animation-delay: 1.75s;
+
+  &:hover {
+    hover:z-10
+  }
 }
 </style>
