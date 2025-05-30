@@ -10,8 +10,8 @@ import settings from "../content/meta/settings.json"
 import Logo from '../assets/images/logo.svg'
 import PrevNext from "../components/PrevNext.astro"
 
-import Designer from "../components/Designer.astro"
-import GenerateSpeech from "../components/GenerateSpeech.astro"
+import ModalDesigner from "../components/ModalDesigner.astro"
+import ModalGenerateSpeech from "../components/ModalGenerateSpeech.astro"
 
 const { title, description, image } = Astro.props
 
@@ -75,8 +75,8 @@ const descNoHtml = stripHTMLTags(description)
 
     <!-- Controls -->
     <div class="fixed top-10 left-10 z-10 select-none flex justify-center gap-3">
-      <GenerateSpeech />
-      <Designer />
+      <ModalGenerateSpeech />
+      <ModalDesigner />
     </div>
 
     <!-- Footer -->
